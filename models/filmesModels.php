@@ -1,5 +1,5 @@
 <?php
-
+// Define a classe Filme, que representa um filme com seus dados.
 class Filme
 {
   public $id;
@@ -18,9 +18,10 @@ class Filme
     $this->publicacao = $publicacao;
   }
 
-  // Retorna todos os filmes (como array de objetos)
+  // Retorna todos os filmes (como array de objetos) O método getTodos() retorna uma lista fixa (mockada) de filmes.
   public static function getTodos(): array
   {
+    // Os dados são armazenados como objetos da própria classe.
     return [
       new Filme(1, 'O Poderoso Chefão', 'Drama',
       'Don Corleone resolve tudo com um olhar mortal e propostas que você literalmente não pode recusar. Um guia prático de negócios, família e tapas de luva de pelica.', '24/03/1972'),
@@ -35,7 +36,7 @@ class Filme
     ];
   }
 
-  // Busca por ID
+  // Busca por ID O método getPorId($id) busca um filme específico pelo ID.
   public static function getPorId(int $id): ?Filme
   {
     foreach (self::getTodos() as $filme) {
