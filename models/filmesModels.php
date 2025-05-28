@@ -22,11 +22,16 @@ class Filme
   public static function getTodos(): array
   {
     return [
-      new Filme(1, 'O Poderoso Chefão', 'Drama', 'Don Corleone resolve tudo com um olhar mortal...', '24/03/1972'),
-      new Filme(2, 'Interestelar', 'Ficção', 'Gravidade, buracos negros e lágrimas no espaço...', '06/11/2014'),
-      new Filme(3, 'Doctor Who', 'Ficção', 'Um alienígena britânico viaja no tempo...', '23/11/1963'),
-      new Filme(4, 'Jumanji', 'Aventura', 'Nunca subestime um jogo de tabuleiro antigo...', '15/12/1995'),
-      new Filme(5, 'Rei Leão', 'Animação', 'Prepare-se pra chorar com um pai leão...', '24/06/1994'),
+      new Filme(1, 'O Poderoso Chefão', 'Drama',
+      'Don Corleone resolve tudo com um olhar mortal e propostas que você literalmente não pode recusar. Um guia prático de negócios, família e tapas de luva de pelica.', '24/03/1972'),
+      new Filme(2, 'Interestelar', 'Ficção', 
+      'Gravidade, buracos negros e lágrimas no espaço: o manual de como plantar milho, atravessar galáxias e tentar entender o final com um diploma de física quântica nas mãos.', '06/11/2014'),
+      new Filme(3, 'Doctor Who', 'Ficção', 
+      'Um alienígena britânico viaja no tempo com uma cabine telefônica azul, salvando o universo com um sorriso sarcástico e uma chave de fenda que faz tudo — menos parafusar', '23/11/1963'),
+      new Filme(4, 'Jumanji', 'Aventura',
+      'Nunca subestime um jogo de tabuleiro antigo. Ele pode liberar selvas, leões, e até adultos traumatizados. Tudo por diversão em família e gritos pela casa inteira.', '15/12/1995'),
+      new Filme(5, 'Rei Leão', 'Animação', 
+      'Prepare-se pra chorar com um pai leão, cantar com um javali e ver um suricato dando lição de vida. Hamlet na savana com muito Hakuna Matata e traumas infantis inclusos.', '24/06/1994'),
     ];
   }
 
