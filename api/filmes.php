@@ -32,6 +32,28 @@ switch ($method) {
             echo json_encode(Filme::getTodos(), JSON_UNESCAPED_UNICODE);
         }
         break;
+    case 'POST':
+    // Lê o corpo da requisição
+    $dados = json_decode(file_get_contents('php://input'), true);
+
+    // Verifica se todos os campos obrigatórios estão presentes
+    if (!isset($dados['nome'], $dados['genero'], $dados['descricao'])) {
+        http_response_code(400);
+        echo json_encode(['erro' => 'Campos obrigatórios: nome, genero e descricao']);
+        break;
+    }
+
+    // Cria o novo filme
+    $resultado = Filme::postFilme($dados['nome'], $dados['genero'], $dados['descricao']);
+    
+    if ($resultado) {
+        http_response_code(201);
+        echo json_encode(['mensagem' => 'Filme criado com sucesso']);
+    } else {
+        http_response_code(500);
+        echo json_encode(['erro' => 'Erro ao criar filme']);
+    }
+    break;
     // Só aceita GET. Outros métodos (como POST/PUT/DELETE) retornam erro 405 (não permitido).
     default:
         http_response_code(405);

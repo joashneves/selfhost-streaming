@@ -1,5 +1,6 @@
 <?php
 // Define a classe Filme, que representa um filme com seus dados.
+require_once __DIR__ . '/../data/db.php';
 class Filme
 {
   public $id;
@@ -19,31 +20,33 @@ class Filme
   }
 
   // Retorna todos os filmes (como array de objetos) O método getTodos() retorna uma lista fixa (mockada) de filmes.
-  public static function getTodos(): array
-  {
-    // Os dados são armazenados como objetos da própria classe.
-    return [
-      new Filme(1, 'O Poderoso Chefão', 'Drama',
-      'Don Corleone resolve tudo com um olhar mortal e propostas que você literalmente não pode recusar. Um guia prático de negócios, família e tapas de luva de pelica.', '24/03/1972'),
-      new Filme(2, 'Interestelar', 'Ficção', 
-      'Gravidade, buracos negros e lágrimas no espaço: o manual de como plantar milho, atravessar galáxias e tentar entender o final com um diploma de física quântica nas mãos.', '06/11/2014'),
-      new Filme(3, 'Doctor Who', 'Ficção', 
-      'Um alienígena britânico viaja no tempo com uma cabine telefônica azul, salvando o universo com um sorriso sarcástico e uma chave de fenda que faz tudo — menos parafusar', '23/11/1963'),
-      new Filme(4, 'Jumanji', 'Aventura',
-      'Nunca subestime um jogo de tabuleiro antigo. Ele pode liberar selvas, leões, e até adultos traumatizados. Tudo por diversão em família e gritos pela casa inteira.', '15/12/1995'),
-      new Filme(5, 'Rei Leão', 'Animação', 
-      'Prepare-se pra chorar com um pai leão, cantar com um javali e ver um suricato dando lição de vida. Hamlet na savana com muito Hakuna Matata e traumas infantis inclusos.', '24/06/1994'),
-    ];
+    public static function getTodos() {
+        return lerFilmes();
+    }
+
+  // Busca por ID O método getPorId($id) busca um filme específico pelo ID.  
+  public static function getPorId($id) {
+      $filmes = lerFilmes();
+      foreach ($filmes as $filme) {
+          if ($filme['id'] == $id) {
+              return $filme;
+          }
+      }
+      return null;
   }
 
-  // Busca por ID O método getPorId($id) busca um filme específico pelo ID.
-  public static function getPorId(int $id): ?Filme
-  {
-    foreach (self::getTodos() as $filme) {
-      if ($filme->id === $id) {
-        return $filme;
-      }
-    }
-    return null;
+  // Cria objeto novo com o Metodo PostFilme, passa dados para a função que cria um filme
+  public static function postFilme(string $nome, string $genero, string $descricao) : ?Filme {
+        // Supondo que você já tenha uma conexão com o banco chamada $pdo
+        require __DIR__ . '/../config/db.php'; // ou onde estiver sua conexão
+
+        $sql = "INSERT INTO filmes (nome, genero, descricao) VALUES (:nome, :genero, :descricao)";
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([
+            ':nome' => $nome,
+            ':genero' => $genero,
+            ':descricao' => $descricao
+        ]);
   }
+
 }
