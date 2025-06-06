@@ -37,14 +37,14 @@ switch ($method) {
     $dados = json_decode(file_get_contents('php://input'), true);
 
     // Verifica se todos os campos obrigatórios estão presentes
-    if (!isset($dados['nome'], $dados['genero'], $dados['descricao'])) {
+    if (!isset($dados['nome'], $dados['genero'], $dados['sinopse'], $dados['publicacao'])) {
         http_response_code(400);
-        echo json_encode(['erro' => 'Campos obrigatórios: nome, genero e descricao']);
+        echo json_encode(['erro' => 'Campos obrigatórios: nome, genero, sinopse e data de publicação']);
         break;
     }
 
     // Cria o novo filme
-    $resultado = Filme::postFilme($dados['nome'], $dados['genero'], $dados['descricao']);
+    $resultado = Filme::postFilme($dados['nome'], $dados['genero'], $dados['sinopse'], $dados['publicacao']);
     
     if ($resultado) {
         http_response_code(201);

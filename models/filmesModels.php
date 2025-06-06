@@ -20,33 +20,40 @@ class Filme
   }
 
   // Retorna todos os filmes (como array de objetos) O método getTodos() retorna uma lista fixa (mockada) de filmes.
-    public static function getTodos() {
-        return lerFilmes();
-    }
+  public static function getTodos()
+  {
+    return lerFilmes();
+  }
 
   // Busca por ID O método getPorId($id) busca um filme específico pelo ID.  
-  public static function getPorId($id) {
-      $filmes = lerFilmes();
-      foreach ($filmes as $filme) {
-          if ($filme['id'] == $id) {
-              return $filme;
-          }
+  public static function getPorId($id)
+  {
+    $filmes = lerFilmes();
+    foreach ($filmes as $filme) {
+      if ($filme['id'] == $id) {
+        return $filme;
       }
-      return null;
+    }
+    return null;
   }
-
   // Cria objeto novo com o Metodo PostFilme, passa dados para a função que cria um filme
-  public static function postFilme(string $nome, string $genero, string $descricao) : ?Filme {
-        // Supondo que você já tenha uma conexão com o banco chamada $pdo
-        require __DIR__ . '/../config/db.php'; // ou onde estiver sua conexão
+  public static function postFilme(string $nome, string $genero, string $sinopse, string $publicacao): ?Filme
+  {
+    $filme = [
+      'titulo' => $nome,
+      'genero' => $genero,
+      'sinopse' => $sinopse,
+      'publicacao' => $publicacao
+    ];
+    // manda o objeto criado para o db.php
+    $salvo = salvarFilmes($filme);
 
-        $sql = "INSERT INTO filmes (nome, genero, descricao) VALUES (:nome, :genero, :descricao)";
-        $stmt = $pdo->prepare($sql);
-        return $stmt->execute([
-            ':nome' => $nome,
-            ':genero' => $genero,
-            ':descricao' => $descricao
-        ]);
+    return new Filme(
+      $salvo['id'],
+      $salvo['titulo'],
+      $salvo['genero'],
+      $salvo['sinopse'],
+      $salvo['publicacao']
+    );
   }
-
 }
