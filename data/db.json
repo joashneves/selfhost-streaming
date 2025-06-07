@@ -47,5 +47,12 @@
         "sinopse": "Um cara comum encontra um vendedor de sabão e juntos fundam o clube mais violento e filosófico da história do cinema.",
         "publicacao": "20\/12\/2000",
         "id": 7
+    },
+    {
+        "titulo": "Matrix Reloaded",
+        "genero": "Sci-fi",
+        "sinopse": "Continuação",
+        "publicacao": "2003",
+        "id": 8
     }
 ]
