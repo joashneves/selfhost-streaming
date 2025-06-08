@@ -6,7 +6,7 @@ require_once __DIR__ . '/tipos/Sinopse.php';
 require_once __DIR__ . '/tipos/Publicacao.php';
 require_once __DIR__ . '/tipos/Id.php';
 
-class Filme
+class Filme implements JsonSerializable
 {
   public Id $id;
   public Titulo $titulo;
@@ -21,6 +21,16 @@ class Filme
     $this->genero = new Genero($genero);
     $this->sinopse = new Sinopse($sinopse);
     $this->publicacao = new Publicacao($publicacao);
+  }
+  public function jsonSerialize(): array
+  {
+    return [
+      'id' => (string) $this->id,
+      'titulo' => (string) $this->titulo,
+      'genero' => (string) $this->genero,
+      'sinopse' => (string) $this->sinopse,
+      'publicacao' => (string) $this->publicacao,
+    ];
   }
 
   public static function getTodos()

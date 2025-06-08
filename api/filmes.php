@@ -18,6 +18,7 @@ switch ($method) {
     case 'GET':
         if ($id !== null) {
             $filme = Filme::getPorId($id);
+            
             if ($filme) {
                 responderJson(true, 'Filme encontrado', $filme);
             } else {
