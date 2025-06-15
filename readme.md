@@ -117,7 +117,14 @@ GET http://localhost:8000/api/filmes
       "genero": "Ficção científica",
       "sinopse": "Um programador descobre que o mundo é uma simulação.",
       "publicacao": "1999-03-31"
-    }
+    },
+    {
+      "id": 2,
+      "titulo": "Interestelar",
+      "genero": "Ficção",
+      "sinopse": "Gravidade, buracos negros e lágrimas no espaço: o manual de como plantar milho, atravessar galáxias e tentar entender o final com um diploma de física quântica nas mãos.",
+      "publicacao": "06/11/2014"
+    },
   ]
 }
 ```
