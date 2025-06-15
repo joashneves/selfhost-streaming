@@ -50,12 +50,15 @@ http://localhost:8000/
 
 ---
 
-# Rotas disponiveis
+## 📚 Rotas disponíveis
 
-| Metodo | Rota             | Descrição                           |
-| ------ | ---------------- | ----------------------------------- |
-| GET    | /                | Página de boas-vindas (HTML)        |
-| GET    | /api             | Boas-vindas à API (JSON)            |
-| GET    | /api/status      | Status da API                       |
-| GET    | /api/filmes      | Retorna todos os filmes disponíveis |
-| GET    | /api/filmes/{id} | Retorna um filme específico por ID  |
+| Método | Rota             | Descrição                                                        |
+| ------ | ---------------- | ---------------------------------------------------------------- |
+| GET    | /                | Página de boas-vindas (HTML)                                     |
+| GET    | /api             | Boas-vindas à API (JSON)                                         |
+| GET    | /api/status      | Status da API                                                    |
+| GET    | /api/filmes      | Retorna todos os filmes disponíveis                              |
+| GET    | /api/filmes/{id} | Retorna um filme específico por ID                               |
+| POST   | /api/filmes      | Cria um novo filme (campos: titulo, genero, sinopse, publicacao) |
+| PUT    | /api/filmes/{id} | Atualiza um filme existente                                      |
+| DELETE | /api/filmes/{id} | Remove um filme do banco                                         |
