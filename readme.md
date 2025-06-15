@@ -8,13 +8,24 @@ Este projeto é uma API REST simples feita com PHP puro, organizada de forma mod
 
 ```bash
 /
-├── index.php # Arquivo de entrada principal (roteador geral)
 ├── api/
 │ ├── index.php # Roteador das rotas da API
 │ ├── filmes.php # Lida com rotas relacionadas a filmes
 │ └── status.php # Status da API
+├── data
+│ ├── db.json # Banco de dados
+│ └── db.php # Funções de acesso ao banco de dados
 ├── models/
-│ └── filmeModels.php # Classe Filme e dados mockados
+│ └── tipos/ # Armazena os tipos que compõem o filme
+│   └── Genero.php
+│   └── Id.php
+│   └── Publicacao.php
+│   └── Sinopse.php
+│   └── Titulo.php
+│ └── filmeModels.php # Classe Filme
+├── utils/ # Armazena classes úteis
+│ ├── responderJson.php # Formata a resposta json
+├── index.php # Arquivo de entrada principal (roteador geral)
 ```
 
 ---
@@ -23,8 +34,8 @@ Este projeto é uma API REST simples feita com PHP puro, organizada de forma mod
 
 ### 📦 Pré-requisitos
 
-- PHP 7.4 ou superior
-- Servidor local como Apache, Nginx ou PHP embutido
+-   PHP 7.4 ou superior
+-   Servidor local como Apache, Nginx ou PHP embutido
 
 ### ▶️ Executando
 
@@ -33,6 +44,7 @@ Você pode rodar com o servidor embutido do PHP:
 ```bash
 php -S localhost:8000
 ```
+
 Acesse no navegador:
 http://localhost:8000/
 
@@ -40,10 +52,10 @@ http://localhost:8000/
 
 # Rotas disponiveis
 
-|Metodo|Rota|Descrição|
-|---|---|---|
-|GET| / | Página de boas-vindas (HTML) |
-|GET| /api | Boas-vindas à API (JSON) |
-|GET| /api/status | Status da API |
-|GET| /api/filmes | Retorna todos os filmes disponíveis |
-|GET| /api/filmes/{id} | Retorna um filme específico por ID |
+| Metodo | Rota             | Descrição                           |
+| ------ | ---------------- | ----------------------------------- |
+| GET    | /                | Página de boas-vindas (HTML)        |
+| GET    | /api             | Boas-vindas à API (JSON)            |
+| GET    | /api/status      | Status da API                       |
+| GET    | /api/filmes      | Retorna todos os filmes disponíveis |
+| GET    | /api/filmes/{id} | Retorna um filme específico por ID  |
