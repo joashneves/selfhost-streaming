@@ -67,29 +67,28 @@ http://localhost:8000/
 
 ## 📬 Exemplos de Requisições
 
-#### - Mensagem de bem vindo
+#### 👋 Mensagem de bem vindo
 
 ```bash
 GET http://localhost:8000/api
 ```
 
--   Resposta:
+- Resposta:
 
 ```bash
 {
   "mensagem": "Bem-vindo à API"
 }
 ```
+____________________________________________
 
----
-
-#### - Status da api
+#### ✅ Status da api
 
 ```bash
 GET http://localhost:8000/api/status
 ```
 
--   Resposta:
+- Resposta:
 
 ```bash
 {
@@ -97,16 +96,15 @@ GET http://localhost:8000/api/status
   "hora": "14:34:37"
 }
 ```
+____________________________________________
 
----
-
-#### - Retorna todos os filmes cadastrados
+#### 🔍 Retorno de todos os filmes cadastrados
 
 ```bash
 GET http://localhost:8000/api/filmes
 ```
 
--   Resposta:
+- Resposta:
 
 ```bash
 {
@@ -123,16 +121,15 @@ GET http://localhost:8000/api/filmes
   ]
 }
 ```
+____________________________________________
 
----
-
-#### - Retorna um filme específico por ID
+#### 🎞️ Retorno um filme específico por ID
 
 ```bash
 GET http://localhost:8000/api/filmes/{id}
 ```
 
--   Resposta:
+- Resposta:
 
 ```bash
 {
@@ -147,16 +144,15 @@ GET http://localhost:8000/api/filmes/{id}
   }
 }
 ```
+____________________________________________
 
----
-
-#### - Criação de novo filme
+#### ➕ Criação de novo filme
 
 ```bash
 POST http://localhost:8000/api/filmes
 ```
 
--   Corpo da requisição
+- Corpo da requisição
 
 ```bash
 {
@@ -167,7 +163,7 @@ POST http://localhost:8000/api/filmes
 }
 ```
 
--   Resposta:
+- Resposta:
 
 ```bash
 {
@@ -182,16 +178,15 @@ POST http://localhost:8000/api/filmes
   }
 }
 ```
+____________________________________________
 
----
-
-#### - Atualização de filme existente
+#### 📝 Atualização de filme existente
 
 ```bash
 PUT http://localhost:8000/api/filmes/{id}
 ```
 
--   Corpo da requisição
+- Corpo da requisição
 
 ```bash
 {
@@ -202,7 +197,7 @@ PUT http://localhost:8000/api/filmes/{id}
 }
 ```
 
--   Resposta:
+- Resposta:
 
 ```bash
 {
@@ -217,16 +212,15 @@ PUT http://localhost:8000/api/filmes/{id}
   }
 }
 ```
+____________________________________________
 
----
-
-#### - Remoção de filme existente
+#### ❌ Remoção de filme existente
 
 ```bash
 DELETE http://localhost:8000/api/filmes/{id}
 ```
 
--   Resposta:
+- Resposta:
 
 ```bash
 {
@@ -234,5 +228,4 @@ DELETE http://localhost:8000/api/filmes/{id}
   "message": "Filme removido com sucesso"
 }
 ```
-
----
+____________________________________________
