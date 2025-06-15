@@ -1,12 +1,5 @@
 [
     {
-        "id": 1,
-        "titulo": "O Poderoso Chefão",
-        "genero": "Drama",
-        "sinopse": "Don Corleone resolve tudo com um olhar mortal e propostas que você literalmente não pode recusar. Um guia prático de negócios, família e tapas de luva de pelica.",
-        "publicacao": "24\/03\/1972"
-    },
-    {
         "id": 2,
         "titulo": "Interestelar",
         "genero": "Ficção",
@@ -54,5 +47,12 @@
         "sinopse": "Continuação",
         "publicacao": "2003",
         "id": 8
+    },
+    {
+        "titulo": "Matrix",
+        "genero": "Ficção científica",
+        "sinopse": "Um programador descobre que o mundo é uma simulação.",
+        "publicacao": "1999-03-31",
+        "id": 9
     }
 ]
