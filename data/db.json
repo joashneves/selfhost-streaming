@@ -1,12 +1,5 @@
 [
     {
-        "id": 1,
-        "titulo": "O Poderoso Chefão",
-        "genero": "Drama",
-        "sinopse": "Don Corleone resolve tudo com um olhar mortal e propostas que você literalmente não pode recusar. Um guia prático de negócios, família e tapas de luva de pelica.",
-        "publicacao": "24\/03\/1972"
-    },
-    {
         "id": 2,
         "titulo": "Interestelar",
         "genero": "Ficção",
@@ -56,87 +49,10 @@
         "id": 8
     },
     {
-        "titulo": "O Poderoso Chefão",
-        "genero": "Drama",
-        "sinopse": "Um épico sobre a família Corleone e o crime organizado na América.",
-        "publicacao": "1972-03-24",
+        "titulo": "Matrix",
+        "genero": "Ficção científica",
+        "sinopse": "Um programador descobre que o mundo é uma simulação.",
+        "publicacao": "1999-03-31",
         "id": 9
-    },
-    {
-        "titulo": "O Poderoso Chefão",
-        "genero": "Drama",
-        "sinopse": "Um épico sobre a família Corleone e o crime organizado na América.",
-        "publicacao": "1972-03-24",
-        "id": 10
-    },
-    {
-        "titulo": "O Poderoso Chefão",
-        "genero": "Drama",
-        "sinopse": "Um épico sobre a família Corleone e o crime organizado na América.",
-        "publicacao": "1972-03-24",
-        "id": 11
-    },
-    {
-        "titulo": "O Poderoso Chefão",
-        "genero": "Drama",
-        "sinopse": "Um épico sobre a família Corleone e o crime organizado na América.",
-        "publicacao": "1972-03-24",
-        "id": 12
-    },
-    {
-        "titulo": "O Poderoso Chefão",
-        "genero": "Drama",
-        "sinopse": "Um épico sobre a família Corleone e o crime organizado na América.",
-        "publicacao": "1972-03-24",
-        "id": 13
-    },
-    {
-        "titulo": "O Poderoso Chefão",
-        "genero": "Drama",
-        "sinopse": "Um épico sobre a família Corleone e o crime organizado na América.",
-        "publicacao": "1972-03-24",
-        "id": 14
-    },
-    {
-        "titulo": "O Poderoso Chefão",
-        "genero": "Drama",
-        "sinopse": "Um épico sobre a família Corleone e o crime organizado na América.",
-        "publicacao": "1972-03-24",
-        "id": 15
-    },
-    {
-        "titulo": "O Poderoso Chefão",
-        "genero": "Drama",
-        "sinopse": "Um épico sobre a família Corleone e o crime organizado na América.",
-        "publicacao": "1972-03-24",
-        "id": 16
-    },
-    {
-        "titulo": "O Poderoso Chefão",
-        "genero": "Drama",
-        "sinopse": "Um épico sobre a família Corleone e o crime organizado na América.",
-        "publicacao": "1972-03-24",
-        "id": 17
-    },
-    {
-        "titulo": "O Poderoso Chefão",
-        "genero": "Drama",
-        "sinopse": "Um épico sobre a família Corleone e o crime organizado na América.",
-        "publicacao": "1972-03-24",
-        "id": 18
-    },
-    {
-        "titulo": "O Poderoso Chefão",
-        "genero": "Drama",
-        "sinopse": "Um épico sobre a família Corleone e o crime organizado na América.",
-        "publicacao": "1972-03-24",
-        "id": 19
-    },
-    {
-        "titulo": "O Poderoso Chefão",
-        "genero": "Drama",
-        "sinopse": "Um épico sobre a família Corleone e o crime organizado na América.",
-        "publicacao": "1972-03-24",
-        "id": 20
     }
 ]

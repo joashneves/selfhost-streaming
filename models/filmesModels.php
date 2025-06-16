@@ -1,19 +1,30 @@
 <?php
-require_once __DIR__ . '/../data/db.php';
-require_once __DIR__ . '/tipos/Titulo.php';
-require_once __DIR__ . '/tipos/Genero.php';
-require_once __DIR__ . '/tipos/Sinopse.php';
-require_once __DIR__ . '/tipos/Publicacao.php';
-require_once __DIR__ . '/tipos/Id.php';
+/**
+ * Filme.php
+ *
+ * Define a classe `Filme`, que representa um filme com tipos fortemente tipados
+ * (Título, Gênero, Sinopse, Publicação, Id) e fornece métodos estáticos para
+ * manipular filmes armazenados no "banco de dados" (db.json).
+ */
+
+require_once __DIR__ . '/../data/db.php'; // Acesso ao "banco" de dados
+require_once __DIR__ . '/tipos/Titulo.php'; // Tipagem forte para título
+require_once __DIR__ . '/tipos/Genero.php'; // Tipagem forte para gênero
+require_once __DIR__ . '/tipos/Sinopse.php'; // Tipagem forte para sinopse
+require_once __DIR__ . '/tipos/Publicacao.php'; // Tipagem forte para data
+require_once __DIR__ . '/tipos/Id.php'; // Tipagem forte para ID
 
 class Filme implements JsonSerializable
 {
+  // Propriedades tipadas
   public Id $id;
   public Titulo $titulo;
   public Genero $genero;
   public Sinopse $sinopse;
   public Publicacao $publicacao;
 
+  
+  // Construtor da classe Filme
   public function __construct($id, $titulo, $genero, $sinopse, $publicacao)
   {
     $this->id = new Id($id);
@@ -22,6 +33,9 @@ class Filme implements JsonSerializable
     $this->sinopse = new Sinopse($sinopse);
     $this->publicacao = new Publicacao($publicacao);
   }
+
+  
+  // Serializa a instância para JSON (para uso em respostas de API)
   public function jsonSerialize(): array
   {
     return [
@@ -33,11 +47,15 @@ class Filme implements JsonSerializable
     ];
   }
 
+  
+  // Retorna todos os filmes do banco
   public static function getTodos()
   {
     return lerFilmes();
   }
 
+  
+  // Retorna um filme específico pelo ID
   public static function getPorId($id)
   {
     $filmes = lerFilmes();
@@ -55,6 +73,8 @@ class Filme implements JsonSerializable
     return null;
   }
 
+  
+  // Cria e salva um novo filme
   public static function postFilme(string $nome, string $genero, string $sinopse, string $publicacao): ?Filme
   {
     $filme = [
@@ -75,6 +95,7 @@ class Filme implements JsonSerializable
     );
   }
 
+  //  Atualiza um filme pelo ID com os dados fornecidos
   public static function putFilme($id, array $dadosAtualizados): ?Filme
   {
     $atualizado = atualizarFilme($id, $dadosAtualizados);
@@ -92,6 +113,8 @@ class Filme implements JsonSerializable
     return null;
   }
 
+  
+  // Remove um filme pelo ID
   public static function deleteFilme($id): bool
   {
     return deletarFilme($id);
