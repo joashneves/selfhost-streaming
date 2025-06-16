@@ -1,21 +1,36 @@
 <?php
 require_once __DIR__ . '/../data/db.php';
+require_once __DIR__ . '/tipos/Titulo.php';
+require_once __DIR__ . '/tipos/Genero.php';
+require_once __DIR__ . '/tipos/Sinopse.php';
+require_once __DIR__ . '/tipos/Publicacao.php';
+require_once __DIR__ . '/tipos/Id.php';
 
-class Filme
+class Filme implements JsonSerializable
 {
-  public $id;
-  public $titulo;
-  public $genero;
-  public $sinopse;
-  public $publicacao;
+  public Id $id;
+  public Titulo $titulo;
+  public Genero $genero;
+  public Sinopse $sinopse;
+  public Publicacao $publicacao;
 
   public function __construct($id, $titulo, $genero, $sinopse, $publicacao)
   {
-    $this->id = $id;
-    $this->titulo = $titulo;
-    $this->genero = $genero;
-    $this->sinopse = $sinopse;
-    $this->publicacao = $publicacao;
+    $this->id = new Id($id);
+    $this->titulo = new Titulo($titulo);
+    $this->genero = new Genero($genero);
+    $this->sinopse = new Sinopse($sinopse);
+    $this->publicacao = new Publicacao($publicacao);
+  }
+  public function jsonSerialize(): array
+  {
+    return [
+      'id' => (string) $this->id,
+      'titulo' => (string) $this->titulo,
+      'genero' => (string) $this->genero,
+      'sinopse' => (string) $this->sinopse,
+      'publicacao' => (string) $this->publicacao,
+    ];
   }
 
   public static function getTodos()

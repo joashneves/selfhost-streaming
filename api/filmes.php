@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../utils/responderjson.php';
 require __DIR__ . '/../models/filmesModels.php';
 header('Content-Type: application/json');
 
@@ -17,14 +18,15 @@ switch ($method) {
     case 'GET':
         if ($id !== null) {
             $filme = Filme::getPorId($id);
+            
             if ($filme) {
-                echo json_encode($filme, JSON_UNESCAPED_UNICODE);
+                responderJson(true, 'Filme encontrado', $filme);
             } else {
-                http_response_code(404);
-                echo json_encode(['erro' => 'Filme não encontrado']);
+                responderJson(false, 'Filme não encontrado', null, 404);
             }
         } else {
-            echo json_encode(Filme::getTodos(), JSON_UNESCAPED_UNICODE);
+            $todos = Filme::getTodos();
+            responderJson(true, 'Lista de filmes', $todos);
         }
         break;
 
@@ -32,9 +34,7 @@ switch ($method) {
         $dados = json_decode(file_get_contents('php://input'), true);
 
         if (!isset($dados['titulo'], $dados['genero'], $dados['sinopse'], $dados['publicacao'])) {
-            http_response_code(400);
-            echo json_encode(['erro' => 'Campos obrigatórios: titulo, genero, sinopse e data de publicação']);
-            break;
+            responderJson(false, 'Campos obrigatórios: titulo, genero, sinopse e data de publicação', null, 400);
         }
 
         $resultado = Filme::postFilme(
@@ -45,60 +45,45 @@ switch ($method) {
         );
 
         if ($resultado) {
-            http_response_code(201);
-            echo json_encode(['mensagem' => 'Filme criado com sucesso', 'filme' => $resultado]);
+            responderJson(true, 'Filme criado com sucesso', $resultado, 201);
         } else {
-            http_response_code(500);
-            echo json_encode(['erro' => 'Erro ao criar filme']);
+            responderJson(false, 'Erro ao criar filme', null, 500);
         }
         break;
 
     case 'PUT':
         if ($id === null) {
-            http_response_code(400);
-            echo json_encode(['erro' => 'ID do filme é obrigatório para atualização']);
-            break;
+            responderJson(false, 'ID do filme é obrigatório para atualização', null, 400);
         }
-        // Recebe campo body do json
+
         $dados = json_decode(file_get_contents('php://input'), true);
-        // Valida se os dados do campo são validos
-        if (!isset($dados['titulo'], $dados['genero'], $dados['sinopse'], $dados['publicacao'])) {
-            http_response_code(400);
-            echo json_encode(['erro' => 'Campos obrigatórios: titulo, genero, sinopse e data de publicação']);
-            break;
-        }
-        if (!$dados) {
-            http_response_code(400);
-            echo json_encode(['erro' => 'Dados inválidos ou ausentes']);
-            break;
+
+        if (!$dados || !isset($dados['titulo'], $dados['genero'], $dados['sinopse'], $dados['publicacao'])) {
+            responderJson(false, 'Campos obrigatórios: titulo, genero, sinopse e data de publicação', null, 400);
         }
 
         $atualizado = Filme::putFilme($id, $dados);
         if ($atualizado) {
-            echo json_encode(['mensagem' => 'Filme atualizado com sucesso', 'filme' => $atualizado]);
+            responderJson(true, 'Filme atualizado com sucesso', $atualizado);
         } else {
-            http_response_code(404);
-            echo json_encode(['erro' => 'Filme não encontrado']);
+            responderJson(false, 'Filme não encontrado', null, 404);
         }
         break;
 
     case 'DELETE':
         if ($id === null) {
-            http_response_code(400);
-            echo json_encode(['erro' => 'ID do filme é obrigatório para exclusão']);
-            break;
+            responderJson(false, 'ID do filme é obrigatório para exclusão', null, 400);
         }
 
         if (Filme::deleteFilme($id)) {
-            echo json_encode(['mensagem' => 'Filme removido com sucesso']);
+            responderJson(true, 'Filme removido com sucesso');
         } else {
-            http_response_code(404);
-            echo json_encode(['erro' => 'Filme não encontrado']);
+            responderJson(false, 'Filme não encontrado', null, 404);
         }
         break;
 
     default:
-        http_response_code(405);
-        echo json_encode(['erro' => 'Método não suportado']);
+        responderJson(false, 'Método não suportado', null, 405);
         break;
 }
+
